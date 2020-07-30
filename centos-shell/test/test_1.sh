@@ -1,1 +1,1 @@
-echo "hello, my name is anlzoi. I'm use andrid ssh connent this"
+echo "hello, my name is anlzou. I'm use andrid ssh connent this"
