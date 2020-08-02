@@ -48,4 +48,61 @@
 ##255
 
 #3.位运算
+#$((...))支持以下的二进制位运算符。
+## <<：位左移运算，把一个数字的所有位向左移动指定的位。
+## >>：位右移运算，把一个数字的所有位向右移动指定的位。
+## &：位的“与”运算，对两个数字的所有位执行一个AND操作。
+## |：位的“或”运算，对两个数字的所有位执行一个OR操作。
+## ~：位的“否”运算，对一个数字的所有位取反。
+## ^：位的异或运算（exclusive or），对两个数字的所有位执行一个异或操作。
 
+#4.逻辑运算
+#$((...))支持以下的逻辑运算符。
+## <：小于
+## >：大于
+## <=：小于或相等
+## >=：大于或相等
+## ==：相等
+## !=：不相等
+## &&：逻辑与
+## ||：逻辑或
+## !：逻辑否
+## expr1?expr2:expr3：三元条件运算符。若表达式expr1的计算结果为非零值（算术真），则执行表达式expr2，否则执行表达式expr3。
+
+##如果逻辑表达式为真，返回1，否则返回0。
+
+#5.赋值运算
+#算术表达式$((...))可以执行赋值运算。
+## parameter = value：简单赋值。
+## parameter += value：等价于parameter = parameter + value。
+## parameter -= value：等价于parameter = parameter – value。
+## parameter *= value：等价于parameter = parameter * value。
+## parameter /= value：等价于parameter = parameter / value。
+## parameter %= value：等价于parameter = parameter % value。
+## parameter <<= value：等价于parameter = parameter << value。
+## parameter >>= value：等价于parameter = parameter >> value。
+## parameter &= value：等价于parameter = parameter & value。
+## parameter |= value：等价于parameter = parameter | value。
+## parameter ^= value：等价于parameter = parameter ^ value。
+
+#6.求值运算
+#逗号,在$((...))内部是求值运算符，执行前后两个表达式，并返回后一个表达式的值。
+#echo $((foo = 1 + 2, 3 * 4))
+##12
+#echo $foo
+##3
+
+#7.expr 命令
+#expr命令支持算术运算，可以不使用((...))语法。
+#expr命令支持变量替换。
+#foo=3
+#expr $foo + 2
+##5
+
+##expr命令也不支持非整数参数。
+
+#8.let 命令
+#let命令用于将算术运算的结果，赋予一个变量。
+#let x=2+3
+#echo $x
+##5
